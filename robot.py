@@ -101,7 +101,7 @@ def value_iteration(cost_func: Callable, theta_grid, theta_dot_grid, u_grid):
         if (theta < THETA_MIN or theta > THETA_MAX or
             theta_dot < THETA_DOT_MIN or theta_dot > THETA_DOT_MAX):
             # 边界外惩罚：相当于再走很多步才能回来
-            return 0
+            return 1000.0
         i = np.searchsorted(theta_grid, theta) - 1
         j = np.searchsorted(theta_dot_grid, theta_dot) - 1
         i = max(0, min(i, n_theta - 2))
